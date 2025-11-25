@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <script type="module" src="./script.js"></script>
+        <title>Battleship</title>
+    </head>
+    <body>
+        <header>
+            <h1>Battleship</h1>
+            <div class="user-command">
+                <div class="order">Place the ships!</div>
+            </div>
+            <div class="controls">
+                <label>
+                    <input type="radio" name="mode" value="single" checked>
+                    Single Player
+                </label>
+                <label>
+                    <input type="radio" name="mode" value="pass">
+                    Two Players (Pass Device)
+                </label>
+                <button id="start-btn" type="button">New Game</button>
+            </div>
+        </header>
+    
+        <div class="boards">
+            <div>
+                <div>Player 1</div>
+                <div class="board" id="board-1"></div>
+            </div>
+            <div>
+                <div>Player 2</div>
+                <div class="board" id="board-2"></div>
+            </div>
+        </div>
+
+        <!-- Pass Device overlay: shown when device should be passed -->
+        <div id="pass-overlay" class="hidden">
+            <div class="pass-card">
+                <div id="pass-message">Pass device to Player 1</div>
+                <button id="reveal-btn" type="button">Reveal</button>
+            </div>
+        </div>
+    </body>
+</html>

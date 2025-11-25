@@ -1,0 +1,192 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+body {
+    padding: 10px 20px;
+    background-color: gold;
+}
+
+
+header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    font-family:  Tahoma;
+    
+}
+
+
+.user-command {
+    display: flex;
+    justify-content: center;
+}
+
+.controls {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+}
+
+#start-btn {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: none;
+    background: #333;
+    color: white;
+    cursor: pointer;
+}
+
+.hidden { display: none; }
+
+/* Pass overlay to prevent seeing other player's board */
+#pass-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.pass-card {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#pass-message {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+#reveal-btn {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    background: #0066cc;
+    color: white;
+    cursor: pointer;
+}
+
+/* While overlay is visible, disable board interactions */
+.paused .board {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* Pause mode hides ship visuals by forcing neutral cell background for ship cells */
+.paused .cell.ship {
+    background: white !important;
+}
+
+.order {
+    background: rgb(198, 188, 188);
+    width: 200px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+
+.boards{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.board {
+    display: grid;
+    grid-template-rows: repeat(10, 30px);
+    grid-template-columns: repeat(10, 30px);
+    gap: 2px;
+    background: black;
+    padding: 2px;
+}
+
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background: white;
+    border: none; 
+    cursor: pointer;
+}
+
+.cell:hover{
+    background: #cce6ff;
+}
+
+.cell.ship {
+    background: blue;
+}
+
+.cell.ship:hover {
+    background: red;
+}
+
+.cell.attacked {
+    background: red !important;
+}
+
+.cell.missed {
+    background: green !important;
+}
+
+.cell.preview {
+    background: rgba(0, 150, 200, 0.25) !important;
+}
+
+.cell.preview.invalid {
+    background: rgba(255, 0, 0, 0.45) !important;
+}
+
+.cell.dragging {
+    background-color: rgba(0, 200, 255, 0.7);
+}
+
+/* Draggable ship UI styles */
+#ship-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+}
+
+.draggable-ship {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    background: #eaeaea;
+    border: 1px solid #333;
+    border-radius: 4px;
+    cursor: grab;
+    user-select: none;
+}
+
+.draggable-ship.vertical {
+    flex-direction: column;
+}
+
+.draggable-ship .mini-cell {
+    width: 18px;
+    height: 18px;
+    background: #444;
+    border: 1px solid #222;
+    box-sizing: border-box;
+}
+
+.draggable-ship span.count {
+    font-size: 12px;
+    color: #222;
+    margin-left: 6px;
+}
+
